@@ -47,8 +47,8 @@ def createGraph(beginWord, endWord, wordList):
                     q.append((next, step + 1))
 
 def main():
-    beginWord = "cold"
-    endWord = "warm"
+    beginWord = "cars"
+    endWord = "cats"
     wordList = createWordList(len(beginWord))
     result = createGraph(beginWord, endWord, wordList)
     print (result)

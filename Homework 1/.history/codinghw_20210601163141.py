@@ -23,7 +23,7 @@ def oneCharacterDifference(word1, word2):
         return count == 1
 
 #create graph using function
-def createGraph(beginWord, endWord, wordList):
+def createGraph(wordList, beginWord, endWord):
     graph = defaultdict(set)
     full_list = wordList + [beginWord]
     for word1 in full_list:
@@ -35,7 +35,7 @@ def createGraph(beginWord, endWord, wordList):
     q = deque([(beginWord, 0)])
     visited = set()
     
-    #BFS queue, if we can endWord than return #step
+    #BFS queue, if we can endWOrd than return #step
     while q:
         node, step = q.popleft()  
         if node == endWord:
@@ -47,11 +47,10 @@ def createGraph(beginWord, endWord, wordList):
                     q.append((next, step + 1))
 
 def main():
-    beginWord = "cold"
-    endWord = "warm"
+    beginWord = "cars"
+    endWord = "cats"
     wordList = createWordList(len(beginWord))
-    result = createGraph(beginWord, endWord, wordList)
-    print (result)
+    createGraph(beginWord, endWord, wordList)
 
 if __name__ == '__main__':
     main()

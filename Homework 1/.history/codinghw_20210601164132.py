@@ -48,7 +48,7 @@ def createGraph(beginWord, endWord, wordList):
 
 def main():
     beginWord = "cold"
-    endWord = "warm"
+    endWord = "cats"
     wordList = createWordList(len(beginWord))
     result = createGraph(beginWord, endWord, wordList)
     print (result)

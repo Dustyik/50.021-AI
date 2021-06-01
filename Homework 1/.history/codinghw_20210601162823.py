@@ -6,10 +6,9 @@ def is_valid_word(word):
 
 def createWordList(wordLength):
     word_list = []
-    for word in WORDS:
-        if len(word) == wordLength:
-            word_list.append(word)
-    return word_list
+
+
+
 
 #check if one char is different
 def oneCharacterDifference(word1, word2):
@@ -23,7 +22,7 @@ def oneCharacterDifference(word1, word2):
         return count == 1
 
 #create graph using function
-def createGraph(beginWord, endWord, wordList):
+def createGraph(wordList, beginWord, endWord):
     graph = defaultdict(set)
     full_list = wordList + [beginWord]
     for word1 in full_list:
@@ -35,7 +34,7 @@ def createGraph(beginWord, endWord, wordList):
     q = deque([(beginWord, 0)])
     visited = set()
     
-    #BFS queue, if we can endWord than return #step
+    #BFS queue, if we can endWOrd than return #step
     while q:
         node, step = q.popleft()  
         if node == endWord:
@@ -45,13 +44,3 @@ def createGraph(beginWord, endWord, wordList):
             for next in graph[node]:
                 if next not in visited:
                     q.append((next, step + 1))
-
-def main():
-    beginWord = "cold"
-    endWord = "warm"
-    wordList = createWordList(len(beginWord))
-    result = createGraph(beginWord, endWord, wordList)
-    print (result)
-
-if __name__ == '__main__':
-    main()
