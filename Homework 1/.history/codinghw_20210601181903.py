@@ -73,5 +73,3 @@ if __name__ == '__main__':
 
 def test(word1, word2):
     return [w for w in WORDS if oneCharacterDifference(word1,word2)]
-
-print (test("cats", "cars"))

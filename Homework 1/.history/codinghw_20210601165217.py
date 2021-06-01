@@ -1,17 +1,4 @@
 WORDS = set(i.lower().strip() for i in open("words2.txt"))
-
-
-def oneCharacterDifference(word1, word2):
-    if (word1 == word2):
-        return False
-    else:
-        count = 0
-        for i in range(len(word1)):
-            if(word1[i] != word2[i]):
-                count += 1
-        return count == 1
-'''
-WORDS = set(i.lower().strip() for i in open("words2.txt"))
 from collections import defaultdict, deque
 
 def is_valid_word(word):
@@ -69,9 +56,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-'''
-
-def test(word1, word2):
-    return [w for w in WORDS if oneCharacterDifference(word1,word2)]
-
-print (test("cats", "cars"))
