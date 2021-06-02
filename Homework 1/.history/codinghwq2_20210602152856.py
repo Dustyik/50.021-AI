@@ -61,7 +61,7 @@ class FlightProblem(Problem): #inheriting from Problem SuperClass
     def goal_test(self, state):
         return state.current_city == self.goal.current_city and state.current_time <= self.goal.current_time
 
-#Part 3
+
 def find_itinerary(start_city, start_time, end_city, deadline):
     start_flight_state = FlightState(start_city, start_time)
     end_flight_state = FlightState(end_city, deadline)

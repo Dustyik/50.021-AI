@@ -26,7 +26,6 @@ class Flight:
         return str((self.start_city, self.start_time))+ "->"+ str((self.end_city, self.end_time))
 
     def matches(self, city, time):
-        #Part 2
         #returns boolean whether city and time match those of the flights, flight leaves city past the time argument
         return (self.start_city == city and self.start_time >= time)
 
@@ -61,7 +60,7 @@ class FlightProblem(Problem): #inheriting from Problem SuperClass
     def goal_test(self, state):
         return state.current_city == self.goal.current_city and state.current_time <= self.goal.current_time
 
-#Part 3
+
 def find_itinerary(start_city, start_time, end_city, deadline):
     start_flight_state = FlightState(start_city, start_time)
     end_flight_state = FlightState(end_city, deadline)

@@ -7,7 +7,6 @@
 from search import Problem, breadth_first_search
 
 class FlightState:
-    #Part 1
     def __init__(self, city, time):
         self.current_city = city
         self.current_time = time
@@ -26,7 +25,6 @@ class Flight:
         return str((self.start_city, self.start_time))+ "->"+ str((self.end_city, self.end_time))
 
     def matches(self, city, time):
-        #Part 2
         #returns boolean whether city and time match those of the flights, flight leaves city past the time argument
         return (self.start_city == city and self.start_time >= time)
 
@@ -61,7 +59,7 @@ class FlightProblem(Problem): #inheriting from Problem SuperClass
     def goal_test(self, state):
         return state.current_city == self.goal.current_city and state.current_time <= self.goal.current_time
 
-#Part 3
+
 def find_itinerary(start_city, start_time, end_city, deadline):
     start_flight_state = FlightState(start_city, start_time)
     end_flight_state = FlightState(end_city, deadline)
@@ -69,27 +67,18 @@ def find_itinerary(start_city, start_time, end_city, deadline):
     solution = breadth_first_search(flightProblem)
     return solution
 
-def find_shortest_itinerary(start_city, end_city):
-    #Part 4
-    #When the shortest path is length 200, it will take roughly 2x number of calls to find_itinerary to solve
-    #Assuming that a solution exist, it will always find the shortest path to the destination city
-    start_time = 1
+
+
+def main():
+    #Part 3
     deadline = 1
     solution = None
     while solution is None:
-        solution = find_itinerary(start_city, start_time, end_city, deadline)
+        solution = find_itinerary('Rome', 1, 'Istanbul', deadline)
         deadline += 1
 
-    shortest_itinerary = []
     for sol in solution.solution():
-        shortest_itinerary.append(str(sol))
-
-    return shortest_itinerary
-
-def main():
-    #Part 4
-    result = find_shortest_itinerary('Rome', 'Istanbul')
-    print (result)
+        print (str(sol))
 
 if __name__ == "__main__":
     main()
