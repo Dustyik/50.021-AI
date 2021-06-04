@@ -1,5 +1,9 @@
-#Answers to Questions in the document can be found as comments in the main() function
-import math
+#flight search engine
+#flight - starting city + time
+#city - strings and time
+
+#1. Good choice of state - Current City and Current Time
+
 from search import Problem, breadth_first_search
 
 class FlightState:
@@ -25,6 +29,8 @@ class Flight:
         #Part 2
         #returns boolean whether city and time match those of the flights, flight leaves city past the time argument
         return (self.start_city == city and self.start_time >= time)
+
+
 
 flightDB = [Flight("Rome", 1, "Paris", 4),
             Flight("Rome", 3, "Madrid", 5),
@@ -93,56 +99,20 @@ def find_shortest_itienerary_challenge(start_city, end_city):
     lowerBound = deadline / 2
 
     while upperBound > lowerBound:
-        middle = math.floor((upperBound + lowerBound)/2) #floor divide
+        middle = (upperBound + lowerBound)//2
         solution = find_itinerary('Rome', 1, 'Istanbul', middle)
-        if solution == None:
+        if solution is None:
             lowerBound = middle + 1
         else:
-            upperBound = solution.state.current_time
+            upperBound = solution.state.time
 
     solution = find_itinerary('Rome', 1, 'Istanbul', upperBound)
-
-    shortest_itinerary = []
-    for sol in solution.solution():
-        shortest_itinerary.append(str(sol))
-    return shortest_itinerary
+    print(solution.solution())
 
 def main():
-    '''
-    Q2 - Part 1: Good Choice of State
-    In this question, state is represented in the FlightState Class, and contains the attributes current time and current city
-    '''
-    #===========================================================================================================================
-    '''
-    Q2 - Part 2: Matches method
-    the matches functions is implemented in the Flight Class, whereby if the city matches, and the time is >= that the current time,
-    the function returns True
-    '''
-    #===========================================================================================================================
-    '''
-    Q2 - Part 3: Flight Itinerary
-    the function is implemented in the find_itinerary() function, and will be used in part 4
-    '''
-    #===========================================================================================================================
-    '''
-    Q2 - Part 4: Find Shortest Itinerary
-    the function is implemented in the find_shortest_itinerary() function
-    the function increments the deadline one by one, until a solution is found, the function runs o(n) with respect to find_itinerary calls
-    '''
-    print ("find_shortest_itinerary")
+    #Part 4
     result = find_shortest_itinerary('Rome', 'Istanbul')
     print (result)
-    print ("=====end======\n")
-    '''
-    Q2 - Part 4: Find Shortest Itinerary Challenge
-    the function is implemented in the find_shortest_itienerary_challenge function
-    the function increments the deadline one by one, until a solution is found, strategy runs in o(log(n)) with respect to find_itinerary calls
-    '''
-    print ("find_shortest_itienerary_challenge")
-    result = find_shortest_itienerary_challenge('Rome', 'Istanbul')
-    print (result)
-    print ("=====end======\n")
-
 
 if __name__ == "__main__":
     main()

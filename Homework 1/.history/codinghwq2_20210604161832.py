@@ -132,7 +132,7 @@ def main():
     print ("find_shortest_itinerary")
     result = find_shortest_itinerary('Rome', 'Istanbul')
     print (result)
-    print ("=====end======\n")
+    print ("=====end======")
     '''
     Q2 - Part 4: Find Shortest Itinerary Challenge
     the function is implemented in the find_shortest_itienerary_challenge function
@@ -141,7 +141,7 @@ def main():
     print ("find_shortest_itienerary_challenge")
     result = find_shortest_itienerary_challenge('Rome', 'Istanbul')
     print (result)
-    print ("=====end======\n")
+    print ("=====end======")
 
 
 if __name__ == "__main__":
