@@ -61,9 +61,49 @@ def solve_semi_magic(algorithm=backtracking_search, **args):
             print (x)
     return csp
 
-solve_semi_magic()
+#print ("Pure Backtracking")
+#solve_semi_magic()
 '''
 Regular backtracking - Number of assignments 9
+V1 -> 1, V2 -> 2, V3 -> 3
+V4 -> 2, V5 -> 3, V6 -> 1,
+V7 -> 3, V8 -> 1, V9 -> 2 
+'''
+
+#print ("\n")
+#print ("Backtracking with Minimum Remaining Values")
+#solve_semi_magic(select_unassigned_variable=mrv)
+'''
+Backtracking with Minimum Remaining Values - number of assignments 11
+number of assignments is not fixed and constantly changes, ranging from 9 - 35
+values assigned is also not fixed and constanly changes
+'''
+
+#print ("\n")
+#print ("Backtracking with Minimum Remaining Values && forward tracking")
+#solve_semi_magic(select_unassigned_variable=mrv,inference = forward_checking)
+'''
+Backtracking with Minimum Remaining Values && forward tracking - number of assignments 9'
+V1 -> 1, V2 -> 2, V3 -> 3
+V4 -> 2, V5 -> 3, V6 -> 1,
+V7 -> 3, V8 -> 1, V9 -> 2 
+'''
+
+#print ("\n")
+#print ("Mantaining Arc Consistency")
+#solve_semi_magic(inference=mac)
+'''
+Search with arc consistency mantained - number of assignments 9'
+V1 -> 1, V2 -> 2, V3 -> 3
+V4 -> 2, V5 -> 3, V6 -> 1,
+V7 -> 3, V8 -> 1, V9 -> 2 
+'''
+
+print ("\n")
+print('Least Constraining Value')
+solve_semi_magic(order_domain_values=lcv)
+'''
+Search with Least Constraining Value'
 V1 -> 1, V2 -> 2, V3 -> 3
 V4 -> 2, V5 -> 3, V6 -> 1,
 V7 -> 3, V8 -> 1, V9 -> 2 
