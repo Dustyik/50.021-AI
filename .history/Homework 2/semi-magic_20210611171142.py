@@ -108,12 +108,3 @@ V1 -> 1, V2 -> 2, V3 -> 3
 V4 -> 2, V5 -> 3, V6 -> 1,
 V7 -> 3, V8 -> 1, V9 -> 2 
 '''
-
-
-''''
-Therefore, other than backtracking with minimum remaining values, all other search methods have 9 assignments,
-while backtraking with minimum remaining has assignments that range from 9 - approximately 35. This is because in the beginning,
-many variables have the same number of remaining values, and whether it reaches the final solution in the least number of assignments
-depends on luck
-
-'''

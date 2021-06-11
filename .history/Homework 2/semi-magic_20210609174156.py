@@ -83,7 +83,7 @@ values assigned is also not fixed and constanly changes
 #print ("Backtracking with Minimum Remaining Values && forward tracking")
 #solve_semi_magic(select_unassigned_variable=mrv,inference = forward_checking)
 '''
-Backtracking with Minimum Remaining Values && forward tracking - number of assignments 9
+Backtracking with Minimum Remaining Values && forward tracking - number of assignments 9'
 V1 -> 1, V2 -> 2, V3 -> 3
 V4 -> 2, V5 -> 3, V6 -> 1,
 V7 -> 3, V8 -> 1, V9 -> 2 
@@ -93,7 +93,7 @@ V7 -> 3, V8 -> 1, V9 -> 2
 #print ("Mantaining Arc Consistency")
 #solve_semi_magic(inference=mac)
 '''
-Search with arc consistency mantained - number of assignments 9
+Search with arc consistency mantained - number of assignments 9'
 V1 -> 1, V2 -> 2, V3 -> 3
 V4 -> 2, V5 -> 3, V6 -> 1,
 V7 -> 3, V8 -> 1, V9 -> 2 
@@ -103,17 +103,8 @@ print ("\n")
 print('Least Constraining Value')
 solve_semi_magic(order_domain_values=lcv)
 '''
-Search with Least Constraining Value - number of assignments 9
+Search with Least Constraining Value'
 V1 -> 1, V2 -> 2, V3 -> 3
 V4 -> 2, V5 -> 3, V6 -> 1,
 V7 -> 3, V8 -> 1, V9 -> 2 
-'''
-
-
-''''
-Therefore, other than backtracking with minimum remaining values, all other search methods have 9 assignments,
-while backtraking with minimum remaining has assignments that range from 9 - approximately 35. This is because in the beginning,
-many variables have the same number of remaining values, and whether it reaches the final solution in the least number of assignments
-depends on luck
-
 '''
