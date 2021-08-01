@@ -1,0 +1,6 @@
+(define (problem LogisticProblem)
+(:domain LogisticDomain>)
+<PDDL code for objects>
+<PDDL code for initial state>
+<PDDL code for goal specification>
+)

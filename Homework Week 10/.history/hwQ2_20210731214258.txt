@@ -1,0 +1,8 @@
+(define (problem LogisticProblem)
+(:domain LogisticDomain>)
+(:init 
+    (PACKAGE p1)
+    (LOCATION Changi) (LOCATION Tampinese)
+)
+<PDDL code for goal specification>
+)

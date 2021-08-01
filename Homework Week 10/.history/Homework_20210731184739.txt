@@ -1,0 +1,8 @@
+Domain File:
+
+Predicates ->   LOCATION(x) -- returns true if x is a location
+                TRUCK(x) -- returns true if x is a truck
+                PACKAGE(x) -- returns true if x is a package
+                PACKAGE-AT-LOCATION(x, y) -- returns true if x is a pacakge and y is a location, and x is in y
+
+

@@ -1,0 +1,23 @@
+(define (problem LogisticProblem)
+    (:domain logistic-domain)
+    (:objects p1 Changi Tampinese Bedok ninjaVan)
+    (:init 
+        (package p1)
+        (location Changi) (location Tampinese) (location Bedok)
+        (truck ninjaVan) 
+        (at-location p1 Bedok) 
+        (at-location ninjaVan Tampinese) 
+    )
+    (:goal (and (at-location p1 Changi))
+    )
+)
+
+
+/*
+Solution Actions
+ 1. (movewithoutpackage tampinese bedok ninjavan)
+ 2. (load p1 ninjavan)
+ 3. (movewithpackage p1 bedok changi ninjavan)
+ 4. (unload p1 ninjavan)
+
+ */

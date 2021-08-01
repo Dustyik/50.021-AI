@@ -1,0 +1,10 @@
+(define (problem LogisticProblem)
+(:domain LogisticDomain>)
+(:init 
+    (PACKAGE p1)
+    (LOCATION Changi) (LOCATION Tampinese) (LOCATION bedok)
+    (TRUCK ?z) //returns true if z is a truck
+
+)
+<PDDL code for goal specification>
+)

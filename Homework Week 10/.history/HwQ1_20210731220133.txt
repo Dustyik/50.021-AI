@@ -1,0 +1,72 @@
+(define (domain logistic-domain)
+    (: predicates  
+            (PACKAGE ?x) 
+            (LOCATION ?y) 
+            (TRUCK ?z)
+            (package-at-location ?x ?y) 
+            (truck-at-location ?z ?y)
+            (carry ?x ?z) 
+      )
+
+  (:action load :parameters (?x, ?z)
+      :precondition (and 
+                      (PACKAGE ?x)
+                      (TRUCK ?z)
+                      (not (carry ?x ?z))
+                    )       
+      :effect       (and
+                      (carry ?x ?z)
+      )
+  )
+
+  (:action unload :parameters (?x, ?z)
+      :precondition (and 
+                      (PACKAGE ?x)
+                      (TRUCK ?z)
+                      (carry ?x ?z)
+                    )       
+      :effect       (and
+                      (not (carry ?x ?z))
+                    )
+  )
+
+  (:action movewithpackage :parameters (?x, ?y1, ?y2, ?z)
+      :precondition (and 
+                      (PACKAGE ?x)
+                      (LOCATION ?y1)
+                      (LOCATION ?y2)
+                      (TRUCK ?z)
+                      (package-at-location ?x ?y1)
+                      (truck-at-location ?x ?y1)
+                    )       
+      :effect       (and
+                      (not (package-at-location ?x ?y1))
+                      (not (truck-at-location ?x ?y1))
+                      (package-at-location ?x ?y2)
+                      (truck-at-location ?x ?y2)
+                    )
+  )
+
+  (:action movewithoutpackage :parameters (?x, ?y1, ?y2, ?z)
+      :precondition (and 
+                      (PACKAGE ?x)
+                      (LOCATION ?y1)
+                      (LOCATION ?y2)
+                      (TRUCK ?z)
+                      (truck-at-location ?x ?y1)
+                    )       
+      :effect       (and
+                      (not (truck-at-location ?x ?y1))
+                      (truck-at-location ?x ?y2)
+                    )
+  )
+)
+
+
+Definitions:
+(PACKAGE ?x) // returns true if x is a package
+(LOCATION ?y) //returns true if y is a location
+(TRUCK ?z) //returns true if z is a truck
+(package-at-location ?x ?y) // returns true if x is a pacakge, y is a location, and x is in y
+(truck-at-location ?z ?y) // returns true if z is a truck, y is a location and z is in y
+(carry ?x ?z) // returns true if x is a package, z is a truck, and z is carrying x

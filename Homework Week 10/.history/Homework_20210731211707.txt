@@ -1,0 +1,14 @@
+Domain File:
+
+(define (domain LogisticProblem))
+
+(: predicates (LOCATION ?x) //returns true if x is a location
+              (TRUCK ?z) //returns true if x is a truck
+              (PACKAGE ?x) // returns true if x is a package
+              (package-at-location ?x ?y) // returns true if x is a pacakge, y is a location, and x is in y
+              (truck-at-location ?z ?y) // returns true if z is a truck, y is a location and z is in y
+              (carry ?x ?z) // returns true if x is a package, z is a truck, and z is carrying x
+
+(:action load :parameters (?x, ?z)) 
+
+

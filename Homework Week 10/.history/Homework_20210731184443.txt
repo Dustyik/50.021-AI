@@ -1,0 +1,5 @@
+Domain File:
+
+Predicates ->   LOCATION(x) -- true if x is a location
+                PACKAGE(x) -- true if x is a package
+
