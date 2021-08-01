@@ -2,16 +2,17 @@
     (:domain logistic-domain)
     (:objects p1 Changi Tampinese Bedok ninjaVan)
     (:init 
-        (package p1)
-        (location Changi) (location Tampinese) (location Bedok)
+        (package p1) 
+        (location Bedok) (location Tampinese) (location Changi)
         (truck ninjaVan) 
         (at-location p1 Bedok) 
         (at-location ninjaVan Tampinese) 
     )
-    (:goal (and (at-location p1 Changi))
+    (:goal (and (at-location p1 Changi) 
+            (not (carry p1 ninjaVan)) 
+            )
     )
 )
-
 
 /*
 Solution Actions

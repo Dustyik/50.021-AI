@@ -1,0 +1,95 @@
+Q3a) Problem File
+
+(define (problem LogisticProblem)
+    (:domain logistic-domain)
+    (:objects p1 p2 Changi Tampinese Bedok ninjaVan)
+    (:init 
+        (package p1) (package p2)
+        (location Bedok) (location Tampinese) (location Changi)
+        (truck ninjaVan) 
+        (at-location p1 Bedok) (at-location p2 Changi) 
+        (at-location ninjaVan Tampinese) 
+    )
+    (:goal (and (at-location p1 Changi) (at-location p2 Bedok) 
+            (not (carry p1 ninjaVan)) (not (carry p2 ninjaVan))
+            )
+    )
+)
+
+Q3b) Domain File
+
+(define (domain logistic-domain)
+    (:predicates  
+            (package ?x) 
+            (location ?y) 
+            (truck ?z)
+            (at-location ?x ?y) 
+            (carry ?x ?z) 
+      )
+
+  (:action load 
+    :parameters (?x ?z)
+      :precondition (and 
+                      (package ?x)
+                      (truck ?z)
+                      (not (carry ?x ?z))
+                    )       
+      :effect       (and
+                      (carry ?x ?z)
+                    )
+  )
+  (:action unload :parameters (?x ?z)
+      :precondition (and 
+                      (package ?x)
+                      (truck ?z)
+                      (carry ?x ?z)
+                    )       
+      :effect       (and
+                      (not (carry ?x ?z))
+                    )
+  )
+
+  (:action movewithpackage :parameters (?x ?y1 ?y2 ?z)
+      :precondition (and 
+                      (location ?y1)
+                      (location ?y2)
+                      (package ?x)
+                      (truck ?z)
+                      (at-location ?x ?y1)
+                      (at-location ?z ?y1)
+                      (carry ?x ?z)
+                    )       
+      :effect       (and
+                      (not (at-location ?x ?y1))
+                      (not (at-location ?z ?y1))
+                      (at-location ?x ?y2)
+                      (at-location ?z ?y2)
+                      (carry ?x ?z)
+                    )
+  )
+  (:action movewithoutpackage :parameters (?y1 ?y2 ?z)
+      :precondition (and 
+                      (location ?y1)
+                      (location ?y2)
+                      (truck ?z)
+                      (at-location ?z ?y1)
+                    )       
+      :effect       (and
+                      (not (at-location ?z ?y1))
+                      (at-location ?z ?y2)
+                    )
+  )
+)
+
+Q3b) Solution
+
+/*
+Solution:
+1. (movewithoutpackage tampines bedok ninjavan)
+2. (load p1 ninjavan)
+3. (movewithpackage p1 bedok changi ninjavan)
+4. (unload p1 ninjavan)
+5. (load p2 ninjavan)
+6. (movewithpackage p2 changi bedok ninjavan)
+7. (unload p2 ninjavan)
+*/
